@@ -222,6 +222,11 @@ def get_hf_hub_cache_repos():
 def get_neuron_cache_path() -> Optional[Path]:
     # NEURON_CC_FLAGS is the environment variable read by the neuron compiler.
     # Among other things, this is where the cache directory is specified.
+
+    neuron_cc_flags = os.environ.get("NEURON_COMPILE_CACHE_URL", "")
+    if len(neuron_cc_flags.strip()) > 0:
+        return Path(neuron_cc_flags) 
+
     neuron_cc_flags = os.environ.get("NEURON_CC_FLAGS", "")
     if "--no-cache" in neuron_cc_flags:
         return None
