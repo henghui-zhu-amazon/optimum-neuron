@@ -104,7 +104,7 @@ MODEL_PATCHING_SPECS = [
 ]
 
 
-if os.environ.get("TORCHELASTIC_RUN_ID"):
+if os.environ.get("MASTER_ADDR"):
     import torch_xla.distributed.xla_backend as xbn
 
     if not isinstance(torch.distributed.group.WORLD, xbn.ProcessGroupXla):
