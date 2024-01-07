@@ -105,6 +105,8 @@ MODEL_PATCHING_SPECS = [
 
 
 if os.environ.get("MASTER_ADDR"):
+    import torch_xla.distributed.xla_backend as xbn
+
     _ORIGINAL_NEURON_CACHE_PATH = get_neuron_cache_path()
 
     # _ORIGINAL_NEURON_CACHE_PATH is `None` when the `--no-cache` flag is set.
